@@ -369,7 +369,7 @@ namespace SnakeGame
 
         private void DrawGameOverText()
         {
-            textBlock.Text = "Game Over";
+            textBlock.Text = $"Game Over\n Score: {score}";
             textBlock.FontSize = 40;
             GameCanvas.Children.Add(textBlock);
             GameCanvas.UpdateLayout();

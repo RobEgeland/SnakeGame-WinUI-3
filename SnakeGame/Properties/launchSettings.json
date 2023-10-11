@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SnakeGame (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "SnakeGame (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

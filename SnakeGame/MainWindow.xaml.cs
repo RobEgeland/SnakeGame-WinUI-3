@@ -36,6 +36,7 @@ namespace SnakeGame
         private int score = 0;
         private List<Windows.Foundation.Point> snake = new List<Windows.Foundation.Point>();
         private Windows.Foundation.Point food;
+        private int speed = 500;
 
         public enum Direction
         {
@@ -65,7 +66,7 @@ namespace SnakeGame
         {
             this.InitializeComponent();
             GameCanvas.Focus(FocusState.Keyboard);
-            gameTimer.Interval = TimeSpan.FromMilliseconds(500);
+            gameTimer.Interval = TimeSpan.FromMilliseconds(speed);
             gameTimer.Tick += GameLoop;
 
             InitializeGame();
@@ -248,11 +249,36 @@ namespace SnakeGame
                 food = GenerateFoodPosition();
                 score++;
                 Score.Text = "Score: " + score.ToString();
+                ChangeSpeed(score);
             }
             else
             {
                 snake.Insert(0, newHead);
                 snake.RemoveAt(snake.Count - 1);
+            }
+        }
+
+        private void ChangeSpeed(int score)
+        {
+            if (score >= 5)
+            {
+                speed = 400;
+            }
+            else if (score >= 10)
+            {
+                speed = 300;
+            }
+            else if (score >= 15)
+            {
+                speed = 200;
+            }
+            else if (score >= 20)
+            {
+                speed = 100;
+            }
+            else
+            {
+                speed = 500;
             }
         }
 
